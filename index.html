@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<!--
+=========================================================
+PROJECT: Corporate Consulting Landing Page
+AUTHOR: Ahmed Ibrahim Mossa
+TECH STACK: HTML5 + Tailwind CSS
+
+DESCRIPTION:
+A modern responsive landing page for a consulting company
+specialized in feasibility studies and investment analysis.
+
+FEATURES:
+✔ Responsive design
+✔ Modern UI using Tailwind CSS
+✔ Service cards
+✔ Team section
+✔ Contact form
+✔ Statistics showcase
+
+FILE STRUCTURE OVERVIEW:
+01. Navigation Bar
+02. Hero Section
+03. Services
+04. Company Statistics
+05. Team Members
+06. Contact Section
+07. Footer
+
+LAST UPDATED:
+2026
+=========================================================
+-->
+<html lang="en" dir="ltr" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>Elite Consulting Group | AI Feasibility Studies</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome for icons -->
+        <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body id="top" class="bg-white text-[#0A1128]" style="font-family: 'Jost';">
+        <!-- 
+        ===========================================================
+        PAGE: Corporate Consulting Landing Page
+        Purpose:
+        A professional landing page for a consulting company that
+        provides feasibility studies and investment analysis.
+
+        Built With:
+        - HTML5
+        - Tailwind CSS
+
+        Section Map:
+        01. Navigation Bar
+        02. Hero Section
+        03. Services
+        04. Company Statistics
+        05. Team Members
+        06. Contact Section
+        07. Footer
+
+        Note:
+        Each section is documented for clarity and maintainability.
+
+        Tip:
+        Use CTRL + F and search by section number
+        Example: [03] to jump directly to Services
+        ===========================================================
+        -->
+
+
+    
+
+        <!-- 
+        =====================================================
+        [01] START SECTION: NAVIGATION BAR
+        =====================================================
+
+        Description:
+        Fixed navigation bar displayed at the top of the page.
+
+        Purpose:
+        - Provide quick navigation across the website
+        - Display company brand identity
+        - Highlight the main Call-To-Action
+
+        UI Features:
+        - Glass/blur background effect
+        - Responsive navigation menu
+        - CTA button for requesting a study
+
+        Components:
+        - Brand logo / company name
+        - Navigation Menu
+        - Call-To-Action(CTA) Button
+        =====================================================
+        -->
+        <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 border-b border-white/6   ">
+
+            <!-- Scroll Progress Indicator -->
+            <div class="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#C6A75E] via-[#DBC07E] to-[#C6A75E] transition-all duration-150 z-[10000]" id="scroll-progress" style="width: 0%;"></div>
+
+            <!-- Container -->
+            <div class="container mx-auto px-6">
+                <div class="flex justify-between items-center">
+                    
+                    <a href="#" class="group">
+                        <h1 class="text-white text-2xl font-bold tracking-tighter transition-all">
+                            ELITE <span class="italic text-[#C6A75E] font-light group-hover:pl-1 transition-all">Consult</span>
+                        </h1>
+                    </a>
+
+                    <div class="hidden lg:flex items-center gap-12">
+                        <div class="flex gap-10">
+                            <a href="#home" class="text-[10px] font-bold text-[#C6A75E] uppercase tracking-[0.3em]">Home</a>
+                            <a href="#services" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">Services</a>
+                            <a href="#work" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">Our Work</a>
+                            <a href="#team" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">The Team</a>
+                        </div>
+                        
+                        <a href="#contact" class="px-8 py-3 border border-[#C6A75E]/50 text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-tr from-[#C6A75E] via-[#DBC07E] to-[#A6863C] hover:text-[#050914] transition-all duration-500 rounded-sm">
+                            Inquire Now
+                        </a>
+                    </div>
+
+                    <button class="lg:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#050914] border-t border-white/5 py-8 px-6 shadow-2xl">
+                <div class="flex flex-col gap-6">
+                    <a href="#services" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Services</a>
+                    <a href="#portfolio" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Portfolio</a>
+                    <a href="#team" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">The Team</a>
+                    <a href="#contact" class="text-[10px] font-bold text-[#C6A75E] uppercase tracking-[0.3em]">Inquire Now</a>
+                </div>
+            </div>
+        </nav>
+
+        <script>
+            window.onscroll = function() {
+                const nav = document.getElementById('navbar');
+                if (window.pageYOffset > 50) {
+                    nav.classList.add('bg-[#050914]/95', 'backdrop-blur-md', 'py-4', 'shadow-xl');
+                    nav.classList.remove('py-6');
+                } else {
+                    nav.classList.remove('bg-[#050914]/95', 'backdrop-blur-md', 'py-4', 'shadow-xl');
+                    nav.classList.add('py-6');
+                }
+            };
+
+            // Mobile Menu Toggle logic
+            document.getElementById('mobile-menu-btn').onclick = function() {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            }
+        </script>
+        <!-- END SECTION: NAVIGATION BAR -->
+
+
+
+       <!-- 
+        =====================================================
+        [02] START SECTION: HERO
+        =====================================================
+
+        Description:
+        Main marketing area displayed immediately after 
+        the navigation bar.
+
+        Purpose:
+        - Introduce the company
+        - Capture visitor attention immediately
+        - Communicate the core value proposition
+        - Encourage users to take action
+
+        Components:
+        - Main headline
+        - Supporting description
+        - Primary Call-to-action buttons
+        - Visual illustration
+        - Trust indicators (company achievements)
+
+        Goal:
+        Encourage visitors to explore services or request
+        a study.
+        =====================================================
+        -->
+        <section id="home" class="relative min-h-screen flex items-center bg-[#050914] overflow-hidden">
+            
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-[-20%] left-[10%] w-[600px] h-[600px] bg-[#C6A75E]/10 blur-[150px] rounded-full animate-[pulse_8s_infinite]"></div>
+                <div class="absolute bottom-[-10%] right-[5%] w-[500px] h-[500px] bg-blue-600/5 blur-[130px] rounded-full animate-[pulse_10s_infinite]"></div>
+                <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#C6A75E 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
+                    
+                    <div class="w-full lg:w-2/3 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 animate-fade-in">
+                            <span class="w-2 h-2 rounded-full bg-[#C6A75E] animate-ping"></span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C6A75E]">AI-Driven Feasibility Architecture</span>
+                        </div>
+
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 tracking-tighter leading-[1.1]" style="font-family: 'Playfair Display', serif;">
+                            The 
+                            <span class="relative inline-block">
+                                <span class="bg-gradient-to-r from-[#C6A75E] via-[#F8E2A1] to-[#C6A75E] bg-clip-text text-transparent italic pr-[0.15em]">Elite</span>
+                                <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#C6A75E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 25 0 50 5 T 100 5" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </span>
+                            <br>Standard for <br class="hidden md:block"> 
+                            <span class="text-white/90">Venture Intelligence.</span>
+                        </h1>
+
+                        <p class="text-gray-400 max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl font-light leading-relaxed mb-12">
+                            Transforming capital into legacy through high-fidelity simulations and cross-border strategic advisory. 
+                            <span class="text-[#C6A75E]/60 font-medium font-['Jost'] uppercase text-xs tracking-[0.3em] block mt-4">London — Riyadh — Dubai</span>
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                            <a href="feasibility-study.html" class="group relative px-10 py-5 bg-gradient-to-tr from-[#C6A75E] via-[#DBC07E] to-[#A6863C] text-[#050914] font-bold uppercase tracking-[0.2em] text-[11px] rounded-full transition-all duration-500 hover:shadow-[0_0_50px_rgba(198,167,94,0.4)] hover:scale-105 active:scale-95 overflow-hidden">
+                                <span class="relative z-10">Initiate Strategic Study</span>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                            </a>
+                            <a href="#services" class="px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-xl text-white font-bold uppercase tracking-[0.2em] text-[11px] rounded-full hover:bg-white hover:text-[#050914] transition-all duration-500">
+                                Explore Ecosystem
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:block w-full lg:w-1/3 relative">
+                        <div class="absolute -inset-4 bg-[#C6A75E]/10 blur-3xl rounded-full"></div>
+                        <div class="relative bg-white/[0.03] backdrop-blur-3xl border border-white/10 p-8 rounded-[2.5rem] shadow-2xl transition-transform duration-700 hover:scale-105 group">
+                            <div class="flex justify-between items-center mb-8">
+                                <span class="text-[10px] uppercase tracking-[0.3em] text-[#C6A75E] font-black">Neural Accuracy</span>
+                                <div class="flex gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500/20"></span>
+                                </div>
+                            </div>
+                            <div class="mb-8">
+                                <div class="text-5xl font-light text-white mb-2 tracking-tighter">98.4<span class="text-[#C6A75E] text-2xl">%</span></div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Predictive Success Rate</div>
+                            </div>
+                            <div class="h-16 w-full mb-8 overflow-hidden">
+                                <svg viewBox="0 0 100 20" class="w-full h-full stroke-[#C6A75E] stroke-[0.5] fill-none">
+                                    <path d="M0 15 Q 10 5, 20 12 T 40 8 T 60 15 T 80 5 T 100 12" class="opacity-20" />
+                                    <path d="M0 15 Q 10 5, 20 12 T 40 8 T 60 15 T 80 5 T 100 12" stroke-dasharray="100" stroke-dashoffset="100">
+                                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="4s" repeatCount="indefinite" />
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6 border-t border-white/10 pt-6">
+                                <div>
+                                    <div class="text-white text-sm font-bold tracking-tight">$4.2B+</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-tighter font-medium">Analyzed</div>
+                                </div>
+                                <div>
+                                    <div class="text-white text-sm font-bold tracking-tight">120+</div>
+                                    <div class="text-[9px] text-gray-500 uppercase tracking-tighter font-medium">Ventures</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+                <span class="text-[9px] uppercase tracking-[0.5em] text-white/20 rotate-90 mb-4">Scroll</span>
+                <div class="w-px h-12 bg-gradient-to-b from-[#C6A75E] to-transparent"></div>
+            </div>
+        </section>
+
+        <style>
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        </style>
+        <!-- END SECTION: HERO -->
+
+        <!-- 
+        =====================================================
+        [03] START SECTION: SERVICES
+        =====================================================
+
+        Description:
+        Displays the main consulting services offered by 
+        the company.
+
+        Purpose:
+        - Explain what the company offers
+        - Help visitors quickly understand available services
+        - Encourage potential clients to explore solutions
+
+        Structure:
+        Service cards displayed in a responsive grid.
+
+        Each Card Includes:
+        - Service Icon
+        - Service title
+        - Short description
+        - Optional action link or CTA
+
+        Goal:
+        Help visitors understand the available solutions 
+        quickly.
+        =====================================================
+        -->
+        <section id="services" class="bg-[#F8F9FA] py-24 relative overflow-hidden">
+            <div class="absolute top-[20%] left-[-10%] w-[400px] h-[400px] bg-[#C6A75E]/5 blur-[120px] rounded-full"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-20">
+                    <span class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block animate-[fadeIn_1s_ease-out]">Strategic Specializations</span>
+                    <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] text-[#050914]">
+                        Our Intelligence <span class="italic text-[#C6A75E]">Ecosystem.</span>
+                    </h2>
+                    <div class="w-20 h-px bg-[#C6A75E]/30 mx-auto mt-8"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="group relative p-10 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(198,167,94,0.1)] transition-all duration-500 hover:-translate-y-2">
+                        <div class="mb-8 w-14 h-14 rounded-2xl bg-[#C6A75E]/10 flex items-center justify-center border border-[#C6A75E]/20 group-hover:bg-[#C6A75E] transition-colors duration-500">
+                            <i class="fas fa-chess-knight text-[#C6A75E] group-hover:text-white text-xl transition-colors duration-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#050914] mb-4 tracking-tight font-['Playfair_Display']">AI-Powered Feasibility</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6 font-['Jost'] text-sm">
+                            Beyond static data. We run 10,000+ market simulations to predict ROI with unparalleled 98.4% accuracy.
+                        </p>
+                        <ul class="text-[10px] text-[#C6A75E] space-y-2 uppercase tracking-widest font-bold opacity-80">
+                            <li>— Market Distortion Analysis</li>
+                            <li>— Risk Mitigation Models</li>
+                        </ul>
+                    </div>
+
+                    <div class="group relative p-10 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(198,167,94,0.1)] transition-all duration-500 hover:-translate-y-2">
+                        <div class="mb-8 w-14 h-14 rounded-2xl bg-[#C6A75E]/10 flex items-center justify-center border border-[#C6A75E]/20 group-hover:bg-[#C6A75E] transition-colors duration-500">
+                            <i class="fas fa-earth-americas text-[#C6A75E] group-hover:text-white text-xl transition-colors duration-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#050914] mb-4 tracking-tight font-['Playfair_Display']">Cross-Border Strategy</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6 font-['Jost'] text-sm">
+                            Connecting capital to opportunity across London, Riyadh, and Dubai with deep regulatory intelligence.
+                        </p>
+                        <ul class="text-[10px] text-[#C6A75E] space-y-2 uppercase tracking-widest font-bold opacity-80">
+                            <li>— Sovereign Wealth Insights</li>
+                            <li>— Entry Strategy (Giga Projects)</li>
+                        </ul>
+                    </div>
+
+                    <div class="group relative p-10 rounded-[2rem] bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(198,167,94,0.1)] transition-all duration-500 hover:-translate-y-2">
+                        <div class="mb-8 w-14 h-14 rounded-2xl bg-[#C6A75E]/10 flex items-center justify-center border border-[#C6A75E]/20 group-hover:bg-[#C6A75E] transition-colors duration-500">
+                            <i class="fas fa-microchip text-[#C6A75E] group-hover:text-white text-xl transition-colors duration-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#050914] mb-4 tracking-tight font-['Playfair_Display']">Venture Intelligence</h3>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6 font-['Jost'] text-sm">
+                            Utilizing proprietary neural networks to identify undervalued assets and emerging market disruptions.
+                        </p>
+                        <ul class="text-[10px] text-[#C6A75E] space-y-2 uppercase tracking-widest font-bold opacity-80">
+                            <li>— Predictive Asset Valuation</li>
+                            <li>— High-Frequency Analysis</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: SERVICES -->
+
+        
+        <!-- 
+        =====================================================
+        [04] START SECTION: COMPANY STATISTICS
+        =====================================================
+
+        Description:
+        Displays key numbers that demonstrate the company's 
+        scale and credibility.
+
+        Purpose:
+        - Build trust with potential clients
+        - Highlight company achievements
+        - Provide measurable impact
+
+        Examples or Typical Metrics Displayed:
+        - Total investments analyzed
+        - Number of feasibility studies completed
+        - Years of industry experience
+        - Countries served
+        =====================================================
+        -->
+        <section id="metrics" class="bg-[#050914] py-12 relative border-y border-[#C6A75E]/20">
+
+            <!-- Ambient Skewed Background -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-[#C6A75E]/5 -skew-x-12 translate-x-1/2"></div>
+
+            <!-- Ambient Glow Backgrounds -->
+            <div class="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-[#C6A75E]/10 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-[15%] right-[-5%] w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full"></div>
+            <div class="absolute top-[50%] left-[50%] w-[600px] h-[600px] bg-purple-600/5 blur-[200px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+
+            <!-- Section Container -->
+            <div class="container mx-auto px-6 relative z-10">
+
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-[fadeIn_1s_ease-out]">
+
+                    <!-- Section Label -->
+                    <span class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">
+                        Measurable Impact
+                    </span>
+
+                    <!-- Section Title -->
+                    <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] text-white">
+                        Our Global <span class="italic text-[#C6A75E]">Achievements</span>
+                    </h2>
+
+                    <!-- Decorative Divider -->
+                    <div class="w-20 h-px bg-[#C6A75E]/60 mx-auto mt-8"></div>
+
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+
+                    <!-- Metric 01 -->
+                    <div class="space-y-2 group">
+                        <div class="text-4xl md:text-5xl font-light text-[#C6A75E] font-['Playfair_Display'] group-hover:scale-110 transition-transform">
+                            $4.2B+
+                        </div>
+                        <div class="text-gray-300 text-[10px] uppercase tracking-[0.4em] font-bold">
+                            Capital Analyzed
+                        </div>
+                    </div>
+
+                    <!-- Metric 02 -->
+                    <div class="space-y-2 group">
+                        <div class="text-4xl md:text-5xl font-light text-[#C6A75E] font-['Playfair_Display'] group-hover:scale-110 transition-transform">
+                            98.4%
+                        </div>
+                        <div class="text-gray-300 text-[10px] uppercase tracking-[0.4em] font-bold">
+                            Prediction Rate
+                        </div>
+                    </div>
+
+                    <!-- Metric 03 -->
+                    <div class="space-y-2 group">
+                        <div class="text-4xl md:text-5xl font-light text-[#C6A75E] font-['Playfair_Display'] group-hover:scale-110 transition-transform">
+                            15+
+                        </div>
+                        <div class="text-gray-300 text-[10px] uppercase tracking-[0.4em] font-bold">
+                            Global Markets
+                        </div>
+                    </div>
+
+                    <!-- Metric 04 -->
+                    <div class="space-y-2 group">
+                        <div class="text-4xl md:text-5xl font-light text-[#C6A75E] font-['Playfair_Display'] group-hover:scale-110 transition-transform">
+                            120+
+                        </div>
+                        <div class="text-gray-300 text-[10px] uppercase tracking-[0.4em] font-bold">
+                            Ventures Launched
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- END SECTION: COMPANY STATISTICS -->
+
+
+        <!-- 
+        =====================================================
+        [05] START SECTION: TEAM
+        =====================================================
+
+        Description:
+        Introduces the leadership and consulting experts 
+        behind the company.
+
+        Purpose:
+        - Humanize the brand
+        - Build trust with visitors
+        - Showcase professional expertise
+
+        Structure:
+        Team member cards displayed in a responsive layout.
+
+        Each Team Card Contains:
+        - Profile image
+        - Consultant name
+        - Position or role
+        - Short professional description
+        =====================================================
+        -->
+        <section id="team" class="bg-white py-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.02] flex items-center justify-center">
+                <span class="text-[40rem] font-serif text-white">E</span>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="mb-24 max-w-3xl">
+                    <span class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.6em] mb-6 block">The Minds Behind the Strategy</span>
+                    <h2 class="text-5xl md:text-6xl font-['Playfair_Display'] leading-tight text-[#050914]">
+                        Elite <span class="italic text-[#C6A75E]">Advisors.</span>
+                    </h2>
+                    <p class="text-gray-500 mt-8 font-['Jost'] font-light text-lg max-w-xl">
+                        A syndicate of cross-border experts dedicated to transforming complex data into sovereign-grade legacy.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-16 lg:gap-20">
+                    
+                    <div class="group">
+                        <div class="relative mb-10 overflow-hidden border-[1px] border-[#C6A75E]/0 rounded-xl aspect-[3/4] bg-[#C6A75E]">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+                                alt="Managing Director" 
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s]">
+                            
+                            <div class="absolute inset-0 border-[0.5px] border-[#C6A75E]/0 group-hover:border-[#C6A75E]/40 transition-all duration-700 m-4"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h4 class=" text-2xl font-['Playfair_Display'] tracking-tight">Ahmed Ibrahim</h4>
+                            <p class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.3em]">Managing Director</p>
+                            <div class="pt-4 flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group md:mt-12"> <div class="relative mb-10 overflow-hidden border-[1px] border-[#C6A75E]/0 rounded-xl aspect-[3/4] bg-[#C6A75E]">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
+                                alt="Advisor" 
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s]">
+                            <div class="absolute inset-0 border-[0.5px] border-[#C6A75E]/0 group-hover:border-[#C6A75E]/40 transition-all duration-700 m-4"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h4 class="text-2xl font-['Playfair_Display'] tracking-tight">Fatma Mohamed</h4>
+                            <p class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.3em]">Strategic Partner</p>
+                            <div class="pt-4 flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <div class="relative mb-10 overflow-hidden border-[1px] border-[#C6A75E]/0 rounded-xl aspect-[3/4] bg-[#C6A75E]">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600" 
+                                alt="Analyst" 
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s]">
+                            <div class="absolute inset-0 border-[0.5px] border-[#C6A75E]/0 group-hover:border-[#C6A75E]/40 transition-all duration-700 m-4"></div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h4 class="text-2xl font-['Playfair_Display'] tracking-tight">Ahmed Mostafa</h4>
+                            <p class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.3em]">Market Analyst</p>
+                            <div class="pt-4 flex gap-4 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="hover:text-[#C6A75E] text-xs transition-colors">
+                                <i class="fab fa-instagram text-xs"></i>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: TEAM -->
+
+
+        <!-- 
+        =====================================================
+        [06] START SECTION: CONTACT
+        =====================================================
+
+        Description:
+        Lead generation area where potential clients can 
+        submit inquiries or request feasibility studies.
+
+        Purpose:
+        - Allow visitors to easily contact the company
+        - Collect client information for follow-up
+        - Encourage business inquiries
+
+        Components:
+        - Contact information
+        - Client inquiry form
+        - Name input field
+        - Email input field
+        - Project description textarea
+        - Submit button
+        ===================================================== 
+        -->
+        <section id="contact" class="bg-[#050914] py-24 lg:py-32 relative">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-20">
+
+                    <!-- Section Header & Offices -->
+                    <div class="animate-[fadeIn_1s_ease-out]">
+                        <span class="text-[#C6A75E] text-[10px] font-bold uppercase tracking-[0.6em] mb-6 block">
+                            Global Presence
+                        </span>
+                        <h2 class="text-5xl md:text-6xl font-['Playfair_Display'] text-white mb-4">
+                            Start a <span class="italic text-[#C6A75E]">Conversation.</span>
+                        </h2>
+                        <p class="text-gray-400/80 mb-12 font-['Jost'] text-lg max-w-xl">
+                            Connecting visionaries with actionable insights
+                        </p>
+
+                        <div class="grid sm:grid-cols-2 gap-12 text-gray-300">
+                            <div>
+                                <h4 class="text-[#C6A75E] font-bold text-xs uppercase tracking-widest mb-4">Egypt Office</h4>
+                                <p class="leading-relaxed text-sm">
+                                    Greater Cairo Area<br>Strategic Operations Hub
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-[#C6A75E] font-bold text-xs uppercase tracking-widest mb-4">Riyadh Office</h4>
+                                <p class="leading-relaxed text-sm">
+                                    KAFD District<br>Saudi Arabia
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <h4 class="text-[#C6A75E] font-bold text-xs uppercase tracking-widest mb-4">Direct Inquiry</h4>
+                                <p class="space-y-2 text-sm">
+                                    <a href="mailto:eng.amossa@gmail.com" class="block hover:text-[#DBC07E] transition-colors">eng.amossa@gmail.com</a>
+                                    <a href="tel:+201000049480" class="block hover:text-[#DBC07E] transition-colors">+20 100 004 9480</a>
+                                    <a href="tel:+966549290131" class="block hover:text-[#DBC07E] transition-colors">+966 54 929 0131</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inquiry Form -->
+                    <div class="bg-[#0A1128] p-10 lg:p-16 shadow-[0_30px_100px_rgba(0,0,0,0.5)] rounded-sm">
+                        <form class="space-y-8">
+                            <div class="relative">
+                                <input type="text" placeholder="FULL NAME" class="w-full bg-transparent border-b border-gray-600 py-4 focus:border-[#C6A75E] outline-none text-sm font-['Jost'] placeholder:text-gray-500 text-white transition-all">
+                            </div>
+                            <div class="relative">
+                                <input type="email" placeholder="INSTITUTIONAL EMAIL" class="w-full bg-transparent border-b border-gray-600 py-4 focus:border-[#C6A75E] outline-none text-sm font-['Jost'] placeholder:text-gray-500 text-white transition-all">
+                            </div>
+                            <div class="relative">
+                                <select class="w-full bg-transparent border-b border-gray-600 py-4 focus:border-[#C6A75E] outline-none text-sm font-['Jost'] text-gray-400 transition-all">
+                                    <option>SELECT SERVICE OF INTEREST</option>
+                                    <option>Feasibility Architecture</option>
+                                    <option>Strategic Advisory</option>
+                                    <option>Venture Intelligence</option>
+                                </select>
+                            </div>
+                            <div class="relative">
+                                <textarea placeholder="BRIEF MESSAGE" rows="4" class="w-full bg-transparent border-b border-gray-600 py-4 focus:border-[#C6A75E] outline-none text-sm font-['Jost'] placeholder:text-gray-500 text-white resize-none transition-all"></textarea>
+                            </div>
+
+                            <button class="w-full py-6 bg-[#C6A75E] text-[#050914] font-bold uppercase tracking-[0.3em] text-[10px] hover:text-white transition-all duration-500 relative overflow-hidden group">
+                                <span class="relative z-10">Submit Inquiry</span>
+                                <div class="absolute inset-0 bg-gradient-to-tr from-[#C6A75E] via-[#DBC07E] to-[#A6863C] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION: CONTACT -->
+
+
+        <!-- 
+        =====================================================
+        [07] START SECTION: FOOTER
+        =====================================================
+
+        Description:
+        The final section of the website.
+
+        Purpose:
+        - Provide additional navigation links
+        - Display company identity and copyright
+        - Offer quick access to important sections
+
+        Contains:
+        - Company name
+        - Quick navigation links
+        - Copyright information
+        ===================================================== 
+        -->
+        <footer class="bg-[#050914] pt-24 pb-12 relative overflow-hidden">
+            <!-- Watermark Large Letter -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 text-[22vw] font-black text-white/[0.02] select-none pointer-events-none uppercase">
+                Elite
+            </div>
+
+            <div class="container mx-auto px-2 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 mb-20">
+
+                    <!-- Brand & Description -->
+                    <div class="lg:col-span-5">
+                        <h3 class="text-white text-2xl font-['Playfair_Display'] mb-6">
+                            ELITE <span class="italic text-[#C6A75E]">Consult.</span>
+                        </h3>
+                        <p class="text-gray-400 font-['Jost'] font-light leading-relaxed max-w-sm">
+                            Architecting the future of investments through AI-integrated intelligence and sovereign-grade advisory.
+                        </p>
+                        <div class="mt-12 flex gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#C6A75E] hover:text-[#C6A75E] transition-all">
+                                <i class="fab fa-linkedin-in text-xs"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#C6A75E] hover:text-[#C6A75E] transition-all">
+                                <i class="fab fa-twitter text-xs"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#C6A75E] hover:text-[#C6A75E] transition-all">
+                                <i class="fab fa-instagram text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Global Offices -->
+                    <div class="lg:col-span-3">
+                        <h4 class="text-white text-[10px] font-bold uppercase tracking-[0.4em] mb-12 opacity-50">
+                            Global Offices
+                        </h4>
+                        <ul class="space-y-8">
+                            <li class="group">
+                                <span class="block text-[#C6A75E] text-xs font-bold mb-1">EGYPT</span>
+                                <span class="text-gray-400 text-sm font-light group-hover:text-white transition-colors">
+                                    Greater Cairo Area, Strategic Hub
+                                </span>
+                            </li>
+                            <li class="group">
+                                <span class="block text-[#C6A75E] text-xs font-bold mb-1">SAUDI ARABIA</span>
+                                <span class="text-gray-400 text-sm font-light group-hover:text-white transition-colors">
+                                    Riyadh, KAFD District
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="lg:col-span-2">
+                        <h4 class="text-white text-[10px] font-bold uppercase tracking-[0.4em] mb-10 opacity-50">
+                            Navigate
+                        </h4>
+                        <ul class="space-y-4 text-sm font-light text-gray-400">
+                            <li><a href="#services" class="hover:text-[#C6A75E] transition-colors">Services</a></li>
+                            <li><a href="#portfolio" class="hover:text-[#C6A75E] transition-colors">Portfolio</a></li>
+                            <li><a href="#team" class="hover:text-[#C6A75E] transition-colors">The Team</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="lg:col-span-2">
+                        <h4 class="text-white text-[10px] font-bold uppercase tracking-[0.4em] mb-10 opacity-50">
+                            Newsletter
+                        </h4>
+                        <form class="relative">
+                            <input type="email" placeholder="EMAIL" class="w-full bg-transparent border-b border-white/10 py-2 outline-none text-xs text-white focus:border-[#C6A75E] transition-colors">
+                            <button class="absolute right-0 top-1/2 -translate-y-1/2 text-[#C6A75E] hover:scale-110 transition-transform">
+                                <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Row -->
+                <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p class="text-[9px] text-gray-400 uppercase tracking-[0.5em]">
+                        © 2026 Elite Consulting Architecture. All Rights Reserved.
+                    </p>
+                    <div class="flex gap-8">
+                        <a href="#" class="text-[9px] text-gray-400 uppercase tracking-[0.5em] hover:text-[#C6A75E]">Privacy Policy</a>
+                        <a href="#" class="text-[9px] text-gray-400 uppercase tracking-[0.5em] hover:text-[#C6A75E]">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END SECTION: FOOTER -->
+    </body>
+</html>
