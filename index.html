@@ -137,18 +137,22 @@ LAST UPDATED:
             </div>
 
             <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#050914] border-t border-white/5 py-8 px-6 shadow-2xl">
-                <div class="flex flex-col gap-6">
-                    <a href="#services" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Services</a>
-                    <a href="#portfolio" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Portfolio</a>
-                    <a href="#team" class="text-[10px] font-bold text-white uppercase tracking-[0.3em]">The Team</a>
-                    <a href="#contact" class="text-[10px] font-bold text-[#C6A75E] uppercase tracking-[0.3em]">Inquire Now</a>
+                <div class="flex flex-col gap-6 items-end text-right"> 
+                    <a href="#home" class="text-[10px] font-bold text-[#C6A75E] uppercase tracking-[0.3em]">Home</a>
+                    <a href="#services" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">Services</a>
+                    <a href="#team" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">The Team</a>
+                    <a href="#contact" class="text-[10px] font-bold text-white uppercase tracking-[0.3em] hover:text-[#C6A75E] transition-colors">Inquire Now</a>
                 </div>
             </div>
         </nav>
 
         <script>
+            const nav = document.getElementById('navbar');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const menuLinks = document.querySelectorAll('#mobile-menu a');
+
             window.onscroll = function() {
-                const nav = document.getElementById('navbar');
                 if (window.pageYOffset > 50) {
                     nav.classList.add('bg-[#050914]/95', 'backdrop-blur-md', 'py-4', 'shadow-xl');
                     nav.classList.remove('py-6');
@@ -158,10 +162,15 @@ LAST UPDATED:
                 }
             };
 
-            // Mobile Menu Toggle logic
-            document.getElementById('mobile-menu-btn').onclick = function() {
-                document.getElementById('mobile-menu').classList.toggle('hidden');
-            }
+            mobileMenuBtn.onclick = function() {
+                mobileMenu.classList.toggle('hidden');
+            };
+
+            menuLinks.forEach(link => {
+                link.onclick = function() {
+                    mobileMenu.classList.add('hidden');
+                };
+            });
         </script>
         <!-- END SECTION: NAVIGATION BAR -->
 
@@ -277,9 +286,15 @@ LAST UPDATED:
                 </div>
             </div>
 
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-                <span class="text-[9px] uppercase tracking-[0.5em] text-white/20 rotate-90 mb-4">Scroll</span>
-                <div class="w-px h-12 bg-gradient-to-b from-[#C6A75E] to-transparent"></div>
+            <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center justify-center z-20 animate-bounce pointer-events-none">
+    
+                <div class="w-0 flex justify-center items-center h-16">
+                    <span class="text-[9px] uppercase tracking-[0.5em] text-white/20 -rotate-90 whitespace-nowrap">
+                        Scroll
+                    </span>
+                </div>
+
+                <div class="w-px h-12 bg-gradient-to-b from-[#C6A75E] to-transparent mt-4"></div>
             </div>
         </section>
 
